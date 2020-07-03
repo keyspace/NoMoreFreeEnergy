@@ -36,9 +36,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hydrogen.cs" />
     <Compile Include="HydrogenEngine.cs" />
     <Compile Include="OxygenGenerator.cs" />
+    <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Sandbox.Common">
