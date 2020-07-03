@@ -21,7 +21,7 @@ namespace Keyspace.NoMoreFreeEnergy
             definition.OperationalPowerConsumption *= 6.0f;
 
             MyLog.Default.WriteLineAndConsole($"DEBUG OG IceConsumptionPerSecond: {definition.IceConsumptionPerSecond}");
-            MyLog.Default.WriteLineAndConsole($"DEBUG HE OperationalPowerConsumption: {definition.OperationalPowerConsumption}");
+            MyLog.Default.WriteLineAndConsole($"DEBUG OG OperationalPowerConsumption: {definition.OperationalPowerConsumption}");
         }
     }
 }
