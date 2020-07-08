@@ -13,12 +13,13 @@ namespace Keyspace.NoMoreFreeEnergy
     [MyEntityComponentDescriptor(typeof(MyObjectBuilder_OxygenGenerator), false)]
     public class OxygenGenerator : MyGameLogicComponent
     {
-        bool initDone = false;
+        static bool initDone = false;
 
         public override void Init(MyObjectBuilder_EntityBase objectBuilder)
         {
             if (initDone)
             {
+                MyLog.Default.WriteLineAndConsole($"DEBUG Init already done! Skipping re-init of: {Entity.DisplayName}");
                 return;
             }
             
