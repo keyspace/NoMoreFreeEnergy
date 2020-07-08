@@ -17,7 +17,7 @@ namespace Keyspace.NoMoreFreeEnergy
             var definition = (MyPowerProducerDefinition)block.BlockDefinition as MyHydrogenEngineDefinition;
 
             // TODO: configurable!
-            definition.FuelProductionToCapacityMultiplier *= 10.0f;  // same as OxygenGenerator's IceConsumptionPerSecond
+            definition.FuelProductionToCapacityMultiplier *= 10.0f;  // FIXME: make single-const, same as OxygenGenerator's IceConsumptionPerSecond
 
             MyLog.Default.WriteLineAndConsole($"DEBUG HE FuelProductionToCapacityMultiplier: {definition.FuelProductionToCapacityMultiplier}");
         }
