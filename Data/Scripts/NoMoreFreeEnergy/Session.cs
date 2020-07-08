@@ -18,12 +18,14 @@ namespace Keyspace.NoMoreFreeEnergy
 
         public override void BeforeStart()
         {
+            // Gas definition is used by hydrogen thrusters; i.e. not needed for mod purposes, at least not yet.
             MyDefinitionId hydrogenId = new MyDefinitionId(typeof(MyObjectBuilder_GasProperties), "Hydrogen");
             var definition = MyDefinitionManager.Static.GetDefinition(hydrogenId);
             var gasDefinition = (MyGasProperties)definition;
-
-            // used in thrusters; i.e. not needed for mod purposes ATM
             gasDefinition.EnergyDensity *= 1.0f;
+
+            // TODO: Move HE/OG modifications here, using the definition manager as above, to avoid
+            // running Init() every time one of those blocks is built.
 
             var definition2 = MyDefinitionManager.Static.GetDefinition(hydrogenId);
             var gasDefinition2 = (MyGasProperties)definition2;

@@ -13,13 +13,15 @@ namespace Keyspace.NoMoreFreeEnergy
     [MyEntityComponentDescriptor(typeof(MyObjectBuilder_OxygenGenerator), false)]
     public class OxygenGenerator : MyGameLogicComponent
     {
+        // FIXME: looks like there's only one var istance for both subtypes; threaded loading means there's a race condition
         static bool initDone = false;
 
         public override void Init(MyObjectBuilder_EntityBase objectBuilder)
         {
+            MyLog.Default.WriteLineAndConsole("DEBUG In OG Init()");
             if (initDone)
             {
-                MyLog.Default.WriteLineAndConsole($"DEBUG Init already done! Skipping re-init of: {Entity.DisplayName}");
+                MyLog.Default.WriteLineAndConsole($"DEBUG Init already done! Skipping re-init of: (FIXME: <size/subtype> oxygen generator)");
                 return;
             }
             
