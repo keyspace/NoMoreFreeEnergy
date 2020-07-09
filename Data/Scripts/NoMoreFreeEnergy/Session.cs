@@ -29,26 +29,25 @@ namespace Keyspace.NoMoreFreeEnergy
             gasDefinition.EnergyDensity *= HYDROGEN_ENERGY_DENSITY_MULTIPLIER;
 
             // TODO: Modify character jetpack?..
-                        
-            MyDefinitionId lheId = new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine");
-            var lheDefinition = MyDefinitionManager.Static.GetDefinition(lheId) as MyHydrogenEngineDefinition;
-            lheDefinition.FuelProductionToCapacityMultiplier *= HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER;
+            
+            RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine"));
+            RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine"));
+            
+            RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), ""));
+            RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall"));
+        }
 
-            // TODO: refactor for less code duplication.
-            MyDefinitionId sheId = new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine");
-            var sheDefinition = MyDefinitionManager.Static.GetDefinition(sheId) as MyHydrogenEngineDefinition;
-            sheDefinition.FuelProductionToCapacityMultiplier *= HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER;
-                        
-            MyDefinitionId logId = new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "");
-            var logDefinition = MyDefinitionManager.Static.GetDefinition(logId) as MyOxygenGeneratorDefinition;
-            logDefinition.IceConsumptionPerSecond *= OXYGEN_GENERATOR_SPEED_MULTIPLIER;
-            logDefinition.OperationalPowerConsumption *= OXYGEN_GENERATOR_POWER_CONSUMPTION_MULTIPLIER;
+        internal void RebalanceHydrogenEngine(MyDefinitionId definitionId)
+        {
+            var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyHydrogenEngineDefinition;
+            definition.FuelProductionToCapacityMultiplier *= HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER;
+        }
 
-            // TODO: refactor for less code duplication.
-            MyDefinitionId sogId = new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall");
-            var sogDefinition = MyDefinitionManager.Static.GetDefinition(sogId) as MyOxygenGeneratorDefinition;
-            sogDefinition.IceConsumptionPerSecond *= OXYGEN_GENERATOR_SPEED_MULTIPLIER;
-            sogDefinition.OperationalPowerConsumption *= OXYGEN_GENERATOR_POWER_CONSUMPTION_MULTIPLIER;
+        internal void RebalanceOxygenGenerator(MyDefinitionId definitionId)
+        {
+            var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyOxygenGeneratorDefinition;
+            definition.IceConsumptionPerSecond *= OXYGEN_GENERATOR_SPEED_MULTIPLIER;
+            definition.OperationalPowerConsumption *= OXYGEN_GENERATOR_POWER_CONSUMPTION_MULTIPLIER;
         }
 
         //protected override void UnloadData()
