@@ -1,4 +1,5 @@
-﻿using Sandbox.Definitions;
+﻿using Sandbox.Common.ObjectBuilders;
+using Sandbox.Definitions;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ObjectBuilders.Definitions;
@@ -24,12 +25,22 @@ namespace Keyspace.NoMoreFreeEnergy
             var gasDefinition = (MyGasProperties)definition;
             gasDefinition.EnergyDensity *= 1.0f;
 
-            // TODO: Move HE/OG modifications here, using the definition manager as above, to avoid
-            // running Init() every time one of those blocks is built.
-
+            // DEBUG
             var definition2 = MyDefinitionManager.Static.GetDefinition(hydrogenId);
             var gasDefinition2 = (MyGasProperties)definition2;
             MyLog.Default.WriteLineAndConsole($"DEBUG H2 EnergyDensity: {gasDefinition2.EnergyDensity}");
+
+            // TODO: Modify character jetpack.
+
+            // Hydrogen engines produce X times as much poswer from the same amount of gas.
+            MyDefinitionId lheId = new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine");
+            var lheDefinition = MyDefinitionManager.Static.GetDefinition(lheId) as MyHydrogenEngineDefinition;
+            lheDefinition.FuelProductionToCapacityMultiplier *= 10.0f;  // FIXME: make single-const, same as OxygenGenerator's IceConsumptionPerSecond
+            MyDefinitionId sheId = new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine");
+            var sheDefinition = MyDefinitionManager.Static.GetDefinition(sheId) as MyHydrogenEngineDefinition;
+            sheDefinition.FuelProductionToCapacityMultiplier *= 10.0f;  // FIXME: make single-const, same as OxygenGenerator's IceConsumptionPerSecond
+
+            
         }
 
         //protected override void UnloadData()
