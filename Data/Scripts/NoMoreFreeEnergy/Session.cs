@@ -13,18 +13,26 @@ namespace Keyspace.NoMoreFreeEnergy
 
         // Gas definition is used by hydrogen thrusters; i.e. not needed for mod purposes, at least not yet.
         private const float HYDROGEN_ENERGY_DENSITY_MULTIPLIER = 1.0f;
-        // Hydrogen engines produce more power from the same amount of gas, and can provide more power overall
-        // compared to vanilla ones.
-        // The latter is needed to work around an exploit where an O2/H2 generator powered by a single H2 engine
-        // (i.e. an under-powered gen) still produces the same amount of hydrogen per tick, effectively allowing
-        // to stockpile hydrogen slowly...
+        // Hydrogen engines produce more power from the same amount of gas.
         private const float HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER = 10.0f;
-        // ... In other words, an engine _must_ be able to power a generator!
-        private const float HYDROGEN_ENGINE_POWER_OUTPUT_MULTIPLIER = 1.5f;
-        // O2/H2 generators churn less ice in the same amount of time, and consume more power.
-        private const float OXYGEN_GENERATOR_SPEED_MULTIPLIER = 1.0f / HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER;
-        // Looks like the lowest this can go is 5.0f or so; any lower and hydrogen can be stockpiled.
-        private const float OXYGEN_GENERATOR_POWER_CONSUMPTION_MULTIPLIER = 6.0f;
+        // O2/H2 generators churn less ice in the same amount of time, and in effect consume more power per
+        // unit of gas produced.
+        // MAGICNUM 6.0f: picked empirically; seems the lowest this can go is 5.0f or so - otherwise hydrogen
+        // can be stockpiled even without exploits.
+        private const float OXYGEN_GENERATOR_SPEED_MULTIPLIER = 1.0f / (6.0f * HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER);
+
+        // Earlier versions of this mod also increased O2/H2 gen's power consumption (by same multiplier, 6.0f,
+        // from 100 kW to 600 kW) instead of further reducing its production speed as above.
+        // However, this showed to be easily exploitable by not providing enough power to
+        // the generator. The rates of ice->gas and power->gas would get out of whack.
+        // This could be side-stepped for the H2 engine (vanilla power of 500 kW) by giving it a max power output
+        // multiplier, so it is above the gen's consumption (e.g. from 500 kW to 750 kW).
+        // But the exploit would still be possible on small grid by powering an O2/H2 generator using a small
+        // battery (vanilla output of 200 kW), and increasing _that_ would start to be too much creep.
+
+        // TODO: Reduce batteries' max input and increase their power loss factor, so hydrogen becomes a
+        // more competitive storage/source of power by way of tanks re-filling faster and not having transmission
+        // losses.
 
         public override void LoadData()
         {
@@ -47,14 +55,12 @@ namespace Keyspace.NoMoreFreeEnergy
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyHydrogenEngineDefinition;
             definition.FuelProductionToCapacityMultiplier *= HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER;
-            definition.MaxPowerOutput *= HYDROGEN_ENGINE_POWER_OUTPUT_MULTIPLIER;
         }
 
         internal void RebalanceOxygenGenerator(MyDefinitionId definitionId)
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyOxygenGeneratorDefinition;
             definition.IceConsumptionPerSecond *= OXYGEN_GENERATOR_SPEED_MULTIPLIER;
-            definition.OperationalPowerConsumption *= OXYGEN_GENERATOR_POWER_CONSUMPTION_MULTIPLIER;
         }
 
         //protected override void UnloadData()
