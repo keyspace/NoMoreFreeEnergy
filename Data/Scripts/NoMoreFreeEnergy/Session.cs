@@ -23,9 +23,9 @@ namespace Keyspace.NoMoreFreeEnergy
         // unit of gas produced.
         // MAGICNUM 6.0f: picked empirically; seems the lowest this can go is 5.0f or so - otherwise hydrogen
         // can be stockpiled even without exploits.
-        private const float OXYGEN_GENERATOR_SPEED_PENALTY_MULTIPLIER = 6.0f;
+        private const float OXYGEN_GENERATOR_EXTRA_SPEED_DIVISOR = 6.0f;
         // Apply both multipliers as divisors to get the final value we'll be using.
-        private const float OXYGEN_GENERATOR_SPEED_MULTIPLIER = 1.0f / (OXYGEN_GENERATOR_SPEED_PENALTY_MULTIPLIER * HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER);
+        private const float OXYGEN_GENERATOR_SPEED_MULTIPLIER = 1.0f / (OXYGEN_GENERATOR_EXTRA_SPEED_DIVISOR * HYDROGEN_ENGINE_EFFICIENCY_MULTIPLIER);
 
         // Earlier versions of this mod also increased O2/H2 gen's power consumption (by same multiplier, 6.0f,
         // from 100 kW to 600 kW) instead of further reducing its production speed as above.
