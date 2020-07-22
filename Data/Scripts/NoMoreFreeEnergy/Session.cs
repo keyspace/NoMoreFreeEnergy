@@ -41,9 +41,9 @@ namespace Keyspace.NoMoreFreeEnergy
         //
         // To clarify, the exploit is still possible, just not as apparent.
 
-        // TODO: Reduce batteries' max input and increase their power loss factor, so hydrogen becomes a
-        // more competitive storage/source of power by way of tanks re-filling faster and not having transmission
-        // losses.
+        // Reduce batteries' max input, so hydrogen becomes a more competitive storage/source of power
+        // by way of tanks re-filling even faster in comparison.
+        private const float BATTERY_MAX_POWER_INPUT_MULTIPLIER = 0.25f;
 
         public override void LoadData()
         {
@@ -55,11 +55,21 @@ namespace Keyspace.NoMoreFreeEnergy
             gasDefinition.EnergyDensity *= HYDROGEN_ENERGY_DENSITY_MULTIPLIER;
             // TODO: Modify character jetpack to have lower capacity?.. (So that flight duration is kept same.)
 
+            RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "LargeBlockBatteryBlock"));
+            RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockBatteryBlock"));
+            RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockSmallBatteryBlock"));
+
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine"));
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine"));
 
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), ""));
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall"));
+        }
+
+        internal void RebalanceBattery(MyDefinitionId definitionId)
+        {
+            var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyBatteryBlockDefinition;
+            definition.RequiredPowerInput *= BATTERY_MAX_POWER_INPUT_MULTIPLIER;
         }
 
         internal void RebalanceHydrogenEngine(MyDefinitionId definitionId)
