@@ -1,4 +1,7 @@
-﻿using Sandbox.ModAPI;
+﻿// Copied from Stamina mod and modified, at:
+// https://github.com/keyspace/Stamina/blob/v0.2.1/Data/Scripts/Stamina/StorageFile.cs
+
+using Sandbox.ModAPI;
 using System;
 using VRage.Utils;
 
