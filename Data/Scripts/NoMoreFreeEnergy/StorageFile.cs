@@ -9,13 +9,21 @@ namespace Keyspace.NoMoreFreeEnergy
     /// </summary>
     public class Config
     {
-        // TODO
+        public float HydrogenGasEnergyDensityMultiplier { get; set; }
+        public float HydrogenEngineEfficiencyMultiplier { get; set; }
+        public float OxygenGeneratorExtraSpeedDivisor { get; set; }
+        public float OxygenGeneratorSpeedMultiplier { get; set; }
+        public float BatteryMaxPowerInputMultiplier { get; set; }
 
         public Config()
         {
             // Defaults; these properties will remain as below if the config couldn't be loaded.
-            // TODO
-        }
+            HydrogenGasEnergyDensityMultiplier = 1.0f;
+            HydrogenEngineEfficiencyMultiplier = 10.0f;
+            OxygenGeneratorExtraSpeedDivisor = 6.0f;
+            OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
+            BatteryMaxPowerInputMultiplier = 0.25f;
+    }
     }
 
     /// <summary>
