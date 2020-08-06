@@ -39,10 +39,11 @@
         /// </summary>
         public float BatteryMaxPowerInputMultiplier { get; set; }
 
+        /// <summary>
+        /// Constructor contains defaults; these properties will remain as below if the config couldn't be loaded.
+        /// </summary>
         public Config()
         {
-            // Defaults; these properties will remain as below if the config couldn't be loaded.
-
             // Thrusters are as gas-hungry as in vanilla. It's a large consideration now whether you want to
             // get airborne.
             //
