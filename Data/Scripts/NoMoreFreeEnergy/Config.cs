@@ -82,8 +82,8 @@
             // Reduce batteries' max input, so hydrogen becomes a more competitive storage/source of power
             // by way of tanks re-filling even faster in comparison.
             //
-            // MAGICNUM 0.125f: arbitrary; eight times slower seems slow enough.
-            BatteryMaxPowerInputMultiplier = 0.125f;
+            // MAGICNUM 0.25f: arbitrary; four times slower seems slow enough.
+            BatteryMaxPowerInputMultiplier = 0.25f;
         }
     }
 }
