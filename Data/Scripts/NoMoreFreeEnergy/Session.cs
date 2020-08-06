@@ -34,25 +34,25 @@ namespace Keyspace.NoMoreFreeEnergy
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall"));
         }
 
-        internal void RebalanceBattery(MyDefinitionId definitionId)
+        private void RebalanceBattery(MyDefinitionId definitionId)
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyBatteryBlockDefinition;
             definition.RequiredPowerInput *= Config.BatteryMaxPowerInputMultiplier;
         }
 
-        internal void RebalanceHydrogenEngine(MyDefinitionId definitionId)
+        private void RebalanceHydrogenEngine(MyDefinitionId definitionId)
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyHydrogenEngineDefinition;
             definition.FuelProductionToCapacityMultiplier *= Config.HydrogenEngineEfficiencyMultiplier;
         }
 
-        internal void RebalanceHydrogenGas(MyDefinitionId definitionId)
+        private void RebalanceHydrogenGas(MyDefinitionId definitionId)
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyGasProperties;
             definition.EnergyDensity *= Config.HydrogenGasEnergyDensityMultiplier;
         }
 
-        internal void RebalanceOxygenGenerator(MyDefinitionId definitionId)
+        private void RebalanceOxygenGenerator(MyDefinitionId definitionId)
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyOxygenGeneratorDefinition;
             definition.IceConsumptionPerSecond *= Config.OxygenGeneratorSpeedMultiplier;
