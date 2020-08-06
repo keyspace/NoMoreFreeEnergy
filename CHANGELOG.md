@@ -10,10 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com//Stamina/compare/v0.0...HEAD
+[Unreleased]: https://github.com//Stamina/compare/v0.1...HEAD
 
 
-## [0.1] - 2020-06-15
+## [0.1] - 2020-08-07
 ### Changed
 
 - Do save the config once after loading.
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1]: https://github.com/keyspace/Stamina/compare/v0.0...v0.1
 
 
-## [0.0] - 2020-06-15
+## [0.0] - 2020-08-07
 ### Added
 - Initial submission to acquire mod Steam ID.
 - O2/H2 generator production speed is reduced 60 times compared to vanilla.
