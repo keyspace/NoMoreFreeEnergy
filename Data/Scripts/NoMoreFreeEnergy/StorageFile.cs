@@ -1,90 +1,22 @@
 ﻿using Sandbox.ModAPI;
 using System;
-using System.Collections.Generic;
 using VRage.Utils;
 
-namespace Keyspace.Stamina
+namespace Keyspace.NoMoreFreeEnergy
 {
     /// <summary>
-    /// Represents the server-provided configuration, loadable from a file.
+    /// Represents the configuration, loadable from a file.
     /// </summary>
     public class Config
     {
-        // Configurables - must be properties for easy save/load to/from XML.
-        public float GainHigh { get; set; }
-        public float GainMedium { get; set; }
-        public float GainLow { get; set; }
-        public float CostNone { get; set; }
-        public float CostLow { get; set; }
-        public float CostMedium { get; set; }
-        public float CostHigh { get; set; }
+        // TODO
 
         public Config()
         {
             // Defaults; these properties will remain as below if the config couldn't be loaded.
-            GainHigh   =  0.0050f;
-            GainMedium =  0.0025f;
-            GainLow    =  0.0005f;
-            CostNone   =  0.0000f;
-            CostLow    = -0.0005f;
-            CostMedium = -0.0025f;
-            CostHigh   = -0.0050f;
+            // TODO
         }
     }
-
-    /// <summary>
-    /// Helper, used by PlayerStatsStorage below to represent a single array element.
-    /// </summary>
-    public struct StatElement
-    {
-        public ulong Id;
-        public PlayerStats Stats;
-    }
-
-    /// <summary>
-    /// Represents how much of the tracked stats each player has.
-    /// 
-    /// Helper class to work around dictionaries being non-serialisable to XML. The
-    /// dictionary is converted to an array, so that can be serialised instead.
-    /// </summary>
-    public class PlayerStatsStorage
-    {
-        public StatElement[] PlayerStatElements { get; set; }
-
-        public PlayerStatsStorage()
-        {
-            PlayerStatElements = new StatElement[0];
-        }
-
-        internal PlayerStatsStorage(Dictionary<ulong, PlayerStats> playerStatsDict)
-        {
-            PlayerStatElements = new StatElement[playerStatsDict.Count];
-
-            int i = 0;
-            foreach (ulong steamId in playerStatsDict.Keys)
-            {
-                PlayerStatElements[i].Id = steamId;
-                PlayerStatElements[i].Stats = playerStatsDict[steamId];
-                i++;
-            }
-        }
-
-        internal Dictionary<ulong, PlayerStats> ToDict()
-        {
-            Dictionary<ulong, PlayerStats> playerStatsDict = new Dictionary<ulong, PlayerStats>();
-
-            for (int i = 0; i < PlayerStatElements.Length; i++)
-            {
-                playerStatsDict.Add(PlayerStatElements[i].Id, PlayerStatElements[i].Stats);
-            }
-
-            return playerStatsDict;
-        }
-    }
-
-    // TODO: Detect if type passed to Save()/Load() of StorageFile is a dictionary
-    // and convert to array on the fly, instead of expecting that a dictionary will
-    // never be passed.
 
     /// <summary>
     /// Helper class to load/save other simple class instances from/to XML files.
