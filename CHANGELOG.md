@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1] - 2020-06-15
 ### Changed
 
+- Do save the config once after loading.
 - Added mod ID to configuration docs.
 
 [0.1]: https://github.com/keyspace/Stamina/compare/v0.0...v0.1
