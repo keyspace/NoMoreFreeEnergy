@@ -18,6 +18,8 @@ namespace Keyspace.NoMoreFreeEnergy
             //Instance = this;
 
             Config = StorageFile.Load<Config>("config.xml");
+            // Save immediately instead of in SaveData(), so it's only done once.
+            StorageFile.Save("config.xml", Config);
 
             // TODO: Modify character jetpack to have lower capacity?.. (So that flight duration is kept same.)
 

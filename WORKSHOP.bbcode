@@ -4,7 +4,7 @@ Rebalances the O2/H2 generator and the hydrogen engine so that the laws of therm
 
 In vanilla, a primed hydrogen engine can power an O2/H2 generator to produce fuel in excess of the amount consumed by the engine. The excess is so great that a battery can be re-charged, given enough ice is available.
 
-This would have been fine if it was not ice being used as crude. The O2/H2 generator is a clear reference to [url=https://en.wikipedia.org/wiki/Electrolysis_of_water]water electrolysers[/url]. The game asks me to suspend disbelief of a thousand things in the name of fun, but [i]this[/i] just breaks immersion, and it feels like an exploit.
+This would have been fine if it was not ice being used as crude. The game asks me to suspend disbelief of a thousand things in the name of fun, but [i]this[/i] just breaks immersion, and it feels like an exploit.
 
 Solar panels produce energy when in sunlight, items don't just teleport between disconnected containers, weapons require ammunition to operate, planets are round - there are things most of us expect from a game. For me, this is one of them.
 
@@ -18,11 +18,9 @@ This, as one might imagine, makes the generator [i]really[/i] slow, and only via
 
 [b]In short, at the end:[/b]
 
-[ul]
-[li]O2/H2 generator production speed is reduced 60 times;[/li]
-[li]hydrogen engine fuel efficiency is increased 10 times;[/li]
-[li]battery recharge rate is reduced 4 times.[/li]
-[/ul]
+- O2/H2 generator production speed is reduced 60 times;
+- hydrogen engine fuel efficiency is increased 10 times;
+- battery recharge rate is reduced 4 times.
 
 This approach has the advantage of allowing existing NPC ship designs to remain operational, provided they use proper hydrogen tanks instead of the hackish O2/H2 gen + ice approach.
 
@@ -32,13 +30,11 @@ A few other approaches have been considered and tested, including simply ramping
 
 Substantially.
 
-[ul]
-[li]Sloppy designs that rely on the player carrying ice by hand to feed an internal O2/H2 generator so that a battery can be re-charged are no longer viable.[/li]
-[li]Hydrogen-powered long-distance rovers become viable.[/li]
-[li]Hydrogen-powered atmospheric thrusters become an option; so do hydrogen-powered ion thrusters. (How these compare to the existing alternatives is still to be tested.)[/li]
-[li]In the absence of uranium, solar panels or wind turbines are now a necessity.[/li]
-[li]Long-term storage of surplus energy as hydrogen may now become desirable.[/li]
-[/ul]
+- Sloppy designs that rely on the player carrying ice by hand to feed an internal O2/H2 generator so that a battery can be re-charged are no longer viable.
+- Hydrogen-powered long-distance rovers become viable.
+- Hydrogen-powered atmospheric thrusters become an option; so do hydrogen-powered ion thrusters. (How these compare to the existing alternatives is still to be tested.)
+- In the absence of uranium, solar panels or wind turbines are now a necessity.
+- Long-term storage of surplus energy as hydrogen may now become desirable.
 
 To clarify, the intent of this mod is not to make the game a reflection of the world: "If you want perfect realism, go play outside." It does not try to "make the numbers right", only to "change the sign".
 
@@ -48,7 +44,7 @@ In other words, the intent is to (subjectively) improve a few qualitative aspect
 
 ... is done per-save.
 
-Go to save directory ([b]%appdata%\SpaceEngineers\Saves[/b] on Windows 10), then to a particular save's [b]Storage\FIXME.sbm_NoMoreFreeEnergy[/b] directory. Edit [b]config.xml[/b].
+Go to save directory ([b]%appdata%\SpaceEngineers\Saves[/b] on Windows 10), then to a particular save's [b]Storage\2189531971.sbm_NoMoreFreeEnergy[/b] directory. Edit [b]config.xml[/b].
 
 To understand what each setting does, read the source code (don't worry, it's just comments and assignments):
 
