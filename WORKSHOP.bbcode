@@ -1,0 +1,61 @@
+Rebalances the O2/H2 generator and the hydrogen engine so that the laws of thermodynamics are not violated.
+
+[h2]Intro: what's wrong?[/h2]
+
+In vanilla, a primed hydrogen engine can power an O2/H2 generator to produce fuel in excess of the amount consumed by the engine. The excess is so great that a battery can be re-charged, given enough ice is available.
+
+This would have been fine if it was not ice being used as crude. The O2/H2 generator is a clear reference to [url=https://en.wikipedia.org/wiki/Electrolysis_of_water]water electrolysers[/url]. The game asks me to suspend disbelief of a thousand things in the name of fun, but [i]this[/i] just breaks immersion, and it feels like an exploit.
+
+Solar panels produce energy when in sunlight, items don't just teleport between disconnected containers, weapons require ammunition to operate, planets are round - there are things most of us expect from a game. For me, this is one of them.
+
+[h2]Basics: how was it addressed?[/h2]
+
+The O2/H2 generator produces gas [b]6 times slower[/b] while using the same amount of energy. In effect, its energy efficiency is reduced that many times.
+
+However, this makes the hydrogen engine pretty useless compared to the battery, since it consumes gas very fast on its own, and so requires additional tanks for storage, as well as plumbing. For this reason, the hydrogen engine's fuel efficiency is [b]increased 10 times[/b] while the generator's speed is further reduced by the same factor.
+
+This, as one might imagine, makes the generator [i]really[/i] slow, and only viable on grids with extra power for the ice-to-gas conversion. As a final touch, battery recharge rate is [b]reduced 8 times[/b], so that even if hydrogen is slow to produce, it's fast to refuel when compared to the alternative.
+
+[b]In short, at the end:[/b]
+
+[ul]
+[li]O2/H2 generator production speed is reduced 60 times;[/li]
+[li]hydrogen engine fuel efficiency is increased 10 times;[/li]
+[li]battery recharge rate is reduced 8 times.[/li]
+[/ul]
+
+This approach has the advantage of allowing existing NPC ship designs to remain operational, provided they use proper hydrogen tanks instead of the hackish O2/H2 gen + ice approach.
+
+A few other approaches have been considered and tested, including simply ramping up the gen's power consumption while retaining its speed. This has the down-side of making another exploit rather apparent, and even hard to avoid unless you're paying extreme attention (which is rather annoying). The exploit is tied to how the game's electric power sub-system works, and is not trivial to address for anyone but Keen (and probably not them either).
+
+[h2]Result: how does the gameplay change?[/h2]
+
+Substantially.
+
+[ul]
+[li]Sloppy designs that rely on the player carrying ice by hand to feed an internal O2/H2 generator so that a battery can be re-charged are no longer viable.[/li]
+[li]Hydrogen-powered long-distance rovers become viable.[/li]
+[li]Hydrogen-powered atmospheric thrusters become an option; so do hydrogen-powered ion thrusters. (How these compare to the existing alternatives is still to be tested.)[/li]
+[li]In the absence of uranium, solar panels or wind turbines are now a necessity.[/li]
+[li]Long-term storage of surplus energy as hydrogen may now become desirable.[/li]
+[/ul]
+
+To clarify, the intent of this mod is not to make the game a reflection of the world: "If you want perfect realism, go play outside." It does not try to "make the numbers right", only to "change the sign".
+
+In other words, the intent is to (subjectively) improve a few qualitative aspects, as compared to achieving quantitative correctness.
+
+[h2]Configuration[/h2]
+
+... is done per-save.
+
+Go to save directory ([b]%appdata%\SpaceEngineers\Saves[/b] on Windows 10), then to a particular save's [b]Storage\FIXME.sbm_NoMoreFreeEnergy[/b] directory. Edit [b]config.xml[/b].
+
+To understand what each setting does, read the source code (don't worry, it's just comments and assignments):
+
+https://github.com/keyspace/NoMoreFreeEnergy/blob/master/Data/Scripts/NoMoreFreeEnergy/Config.cs
+
+Be warned, though: the code contains the description of the remaining exploit mentioned previously.
+
+[h2]Source code[/h2]
+
+https://github.com/keyspace/NoMoreFreeEnergy
