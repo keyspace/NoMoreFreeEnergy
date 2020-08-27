@@ -54,19 +54,24 @@ https://github.com/keyspace/NoMoreFreeEnergy/blob/master/Data/Scripts/NoMoreFree
 
 Be warned: the code contains a description of the remaining exploit mentioned previously.
 
-(The options are a bit confusing, I know, so might change in the future.)
-
 To revert to mod defaults, delete config.xml.
 
-[h3]Configuration for none of the frills[/h3]
+[h3]Configuration: defaults[/h3]
 
-Simply set the engine's efficiency multiplier back to 1, and re-calculate the O2/H2 gen's multiplier.
-
+<BatteryMaxPowerInputMultiplier>0.25</BatteryMaxPowerInputMultiplier>
+<HydrogenEngineEfficiencyMultiplier>10</HydrogenEngineEfficiencyMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
-<HydrogenEngineEfficiencyMultiplier>1</HydrogenEngineEfficiencyMultiplier>
 <OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
-<OxygenGeneratorSpeedMultiplier>0.1666666675</OxygenGeneratorSpeedMultiplier>
+
+[h3]Configuration: none of the frills[/h3]
+
+Simply set all the multipliers to 1. Leave the divisor at 6: that's the mod's core.
+
 <BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
+<HydrogenEngineEfficiencyMultiplier>1</HydrogenEngineEfficiencyMultiplier>
+<HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
+
 
 [h2]Source code[/h2]
 

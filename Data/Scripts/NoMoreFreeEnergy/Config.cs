@@ -14,19 +14,19 @@
         public float BatteryMaxPowerInputMultiplier { get; set; }
 
         /// <summary>
-        /// Energy density of hydrogen gas when used as fuel by thrusters (not by engines!);
-        /// multiplier compared to vanilla.
-        /// Provided for user convenience only, to make the game easier/harder.
-        /// </summary>
-        public float HydrogenGasEnergyDensityMultiplier { get; set; }
-
-        /// <summary>
         /// Energy efficiency of hydrogen engines when converting hydrogen gas to electric power;
         /// multiplier compared to vanilla.
         /// Used directly by game and is also factored into the calculation of final
         /// OxygenGeneratorSpeedMultiplier.
         /// </summary>
         public float HydrogenEngineEfficiencyMultiplier { get; set; }
+
+        /// <summary>
+        /// Energy density of hydrogen gas when used as fuel by thrusters (not by engines!);
+        /// multiplier compared to vanilla.
+        /// Provided for user convenience only, to make the game easier/harder.
+        /// </summary>
+        public float HydrogenGasEnergyDensityMultiplier { get; set; }
 
         /// <summary>
         /// Amount of ice which O2/H2 generators consume in a given time period;
@@ -42,26 +42,39 @@
         /// multiplier compared to vanilla.
         /// Used directly by game, factoring in both the mod's essential
         /// re-balancing and the possible efficiency increase of hydrogen engines.
-        /// Should not be configured directly - use the other settings.
+        /// Can not be configured directly - use the other settings.
         /// </summary>
-        internal float OxygenGeneratorSpeedMultiplier { get; set; }
+        internal float OxygenGeneratorSpeedMultiplier {
+            get {
+                return 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
+            }
+            set {
+                return;
+            }
+        }
 
         /// <summary>
         /// Constructor contains defaults; these properties will remain as below if the config couldn't be loaded.
         /// </summary>
         public Config()
         {
-            // Thrusters are as gas-hungry as in vanilla. It's a large consideration now whether you want to
-            // get airborne.
+            // Reduce batteries' max input, so hydrogen becomes a more competitive storage/source of power
+            // by way of tanks re-filling even faster in comparison.
             //
-            // MAGICNUM 1.0f: not used by mod yet, so don't modify.
-            HydrogenGasEnergyDensityMultiplier = 1.0f;
+            // MAGICNUM 0.25f: arbitrary; four times slower seems slow enough.
+            BatteryMaxPowerInputMultiplier = 0.25f;
 
             // Hydrogen engines produce more power from the same amount of gas. This makes hydrogen engines more
             // useful, and allows them to compete with batteries.
             //
             // MAGICNUM 10.0f: semi-arbitrary, vanilla is 0.005f, this seemed a big-enough improvement.
             HydrogenEngineEfficiencyMultiplier = 10.0f;
+
+            // Thrusters are as gas-hungry as in vanilla. It's a large consideration now whether you want to
+            // get airborne using hydrogen or atmospherics.
+            //
+            // MAGICNUM 1.0f: not used by mod yet, so don't modify.
+            HydrogenGasEnergyDensityMultiplier = 1.0f;
 
             // O2/H2 generators churn less ice in the same amount of time, and in effect consume more power per
             // unit of gas produced.
@@ -86,12 +99,6 @@
             //
             // To clarify, the exploit is still possible, just not as apparent.
             OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
-
-            // Reduce batteries' max input, so hydrogen becomes a more competitive storage/source of power
-            // by way of tanks re-filling even faster in comparison.
-            //
-            // MAGICNUM 0.25f: arbitrary; four times slower seems slow enough.
-            BatteryMaxPowerInputMultiplier = 0.25f;
         }
     }
 }

@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing!
+- O2/H2 generator speed multiplier is no longer directly configurable; it
+  is still configurable indirectly, through the "extra" divisor and hydrogen
+  engine's efficiency multiplier. The setting will be silently removed from
+  the config file on loading the save.
 
 [Unreleased]: https://github.com//Stamina/compare/v0.1...HEAD
 
