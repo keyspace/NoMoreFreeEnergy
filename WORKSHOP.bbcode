@@ -15,25 +15,27 @@ Solar panels produce energy when in sunlight, items don't just teleport between 
 [b]In short:
 
 - O2/H2 generator production speed is reduced 60 times;
-- hydrogen engine fuel efficiency is increased 10 times;
-- battery recharge rate is reduced 4 times.[/b]
+- hydrogen engine fuel efficiency is increased 10 times.[/b]
 
 First, to get rid of the physics violation, the O2/H2 generator produces gas [b]6 times slower[/b] while using the same amount of energy. In effect, its energy efficiency is reduced that many times. (The lowest this can go is somewhere around 5.5.)
 
-However, this makes the hydrogen engine pretty useless compared to the battery, since it consumes gas very fast on its own, and so requires additional tanks for storage, as well as plumbing. For this reason, the hydrogen engine's fuel efficiency is [b]increased 10 times[/b] while the generator's speed is [b]further reduced by the same factor[/b].
+However, this makes the hydrogen engine near-useless compared to the battery, since it consumes gas very fast on its own, and so requires additional tanks for storage, as well as plumbing. For this reason, the hydrogen engine's fuel efficiency is [b]increased 10 times[/b] while the generator's speed is [b]further reduced by the same factor[/b].
 
-That makes the generator [i]really[/i] slow, and only viable on grids with extra power for the ice-to-gas conversion. As a final touch, battery recharge rate is [b]reduced 4 times[/b], so that even if hydrogen is slow to produce, it's fast to refuel when compared to the alternative.
+That makes the generator [i]really[/i] slow, and only viable on grids with extra power for the ice-to-gas conversion. Essentially, this requires building dedicated refuelling stations.
 
 This approach has the advantage of allowing existing NPC ship designs to remain operational, provided they use proper hydrogen tanks instead of the hackish O2/H2 gen + ice approach.
 
-A few other approaches have been considered and tested, including simply ramping up the gen's power consumption while retaining its speed. This has the down-side of making another exploit rather apparent, and even hard to avoid unless you're paying extreme attention (which is quite annoying). The exploit is tied to how the game's electric power sub-system works, and is not trivial to address for anyone but Keen (and probably not them either).
+A few other approaches have been considered and tested, including simply ramping up the gen's power consumption while retaining its speed. This has the down-side of making another exploit rather apparent, and even hard to avoid unless you're paying attention. The exploit is tied to how the game's electric power sub-system works, and is not trivial to address for anyone but Keen (and probably not them either).
 
 [h2]Any extras?[/h2]
 
-Some options are provided to further modify gameplay, but are left at a multiplier of 1 by default.
+The mod started as a way to scratch an itch, but uncovered a few other disbalances once that was done. Mainly, the hydrogen engine remaining an inferior choice compared to the battery, especially in early-game. There should be both pros and cons to either one!
 
-- Hydrogen gas energy density can be increased to make hydrogen thrusters more efficient.
-- Hydrogen engine max power output can be increased. This makes it a viable option of powering atmospheric/ion thrusters.
+The following multipliers are provided to address that, but are left at 1 by default, to cause less surprises.
+
+- Battery recharge rate can be decreased. This makes the choice of battery-only vs. engine-only more pronounced: batteries are simple but slow to recharge, whereas engines are complex to design with and require stationary infrastructure to produce fuel, but very fast to re-fuel.
+- Hydrogen engine max power output can be increased. This makes it a viable choice of powering atmospheric/ion thrusters.
+- Hydrogen gas energy density can be increased. This is only if you feel it's become too precious to be used as hydrogen thruster fuel.
 
 [h2]How does the gameplay change?[/h2]
 
@@ -43,30 +45,39 @@ Substantially.
 - Hydrogen-powered long-distance rovers become viable.
 - Hydrogen-powered atmospheric thrusters become an option; so do hydrogen-powered ion thrusters. (Only if the hydrogen engine's power output multiplier is used, though.)
 - In the absence of uranium, solar panels or wind turbines are now a necessity.
-- Long-term storage of surplus energy as hydrogen may now become desirable.
+- Long-term storage of surplus energy as hydrogen becomes desirable.
 
 To clarify, the intent of this mod is not to make the game a reflection of the world: "If you want perfect realism, go play outside."
 
-The intent is to "change the sign", not  "make the numbers right".
+The intent is to "change the sign", not  "make the numbers right."
 
 [h2]Configuration[/h2]
 
 ... is done per-save.
 
-Go to save directory ([b]%appdata%\SpaceEngineers\Saves[/b] on Windows 10), then to a particular save's [b]Storage\2189531971.sbm_NoMoreFreeEnergy[/b] directory. Edit [b]config.xml[/b].
+Go to save directory ([b]%AppData%\SpaceEngineers\Saves[/b] on Windows 10), then to a particular save's [b]Storage\2189531971.sbm_NoMoreFreeEnergy[/b] directory. Edit [b]config.xml[/b].
 
 To understand what each setting does, read the source code (don't worry, it's just comments and assignments):
 
 https://github.com/keyspace/NoMoreFreeEnergy/blob/master/Data/Scripts/NoMoreFreeEnergy/Config.cs
 
-Be warned: the code contains a description of the remaining exploit mentioned previously.
-
 To revert to mod defaults, delete config.xml.
 
 [h3]Configuration: defaults[/h3]
 
+<BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
+<HydrogenEngineEfficiencyMultiplier>10</HydrogenEngineEfficiencyMultiplier>
+<HydrogenEngineMaxPowerOutputMultiplier>1</HydrogenEngineMaxPowerOutputMultiplier>
+<HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
+
+[h3]Configuration: mod author's preference[/h3]
+
+This takes advantage of most of the "extras" mentioned previously, and makes the hydrogen engine an all-round useful block.
+
 <BatteryMaxPowerInputMultiplier>0.25</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>10</HydrogenEngineEfficiencyMultiplier>
+<HydrogenEngineMaxPowerOutputMultiplier>4</HydrogenEngineMaxPowerOutputMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
 <OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
@@ -76,6 +87,7 @@ Simply set all the multipliers to 1. Leave the divisor at 6: that's the mod's co
 
 <BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>1</HydrogenEngineEfficiencyMultiplier>
+<HydrogenEngineMaxPowerOutputMultiplier>1</HydrogenEngineMaxPowerOutputMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
 <OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 

@@ -9,7 +9,7 @@
         /// Maximum allowed battery input; multiplier compared to vanilla.
         /// Allows making the battery more "sluggish" to recharge, making the choice of using
         /// batteries-only vs. hydrogen-only more pronounced: either simple but slow to recharge
-        /// (batteries) or complex but fast to recharge (hydrogen engines).
+        /// (batteries) or complex but fast to refuel (hydrogen engines).
         /// </summary>
         public float BatteryMaxPowerInputMultiplier { get; set; }
 
@@ -66,11 +66,13 @@
         /// </summary>
         public Config()
         {
-            // Reduce batteries' max input, so hydrogen becomes a more competitive storage/source of power
-            // by way of tanks re-filling even faster in comparison.
+            // Initial release used to reduce batteries' max input, so hydrogen would become a
+            // more competitive way of storage and source of power (by way of tanks re-filling even faster
+            // in comparison); however, it's been highlighted that this strays from the core mission of
+            // the mod, so instead...
             //
-            // MAGICNUM 0.25f: arbitrary; four times slower seems slow enough.
-            BatteryMaxPowerInputMultiplier = 0.25f;
+            // MAGICNUM 1.0f: leave it up to the player. Used to be 0.25f.
+            BatteryMaxPowerInputMultiplier = 1.0f;
 
             // Hydrogen engines produce more power from the same amount of gas. This makes them more
             // useful, and allows them to compete with batteries.
@@ -80,9 +82,9 @@
 
             // Hydrogen engines could produce more power in a given amount of time. This could make them more
             // useful, and could allow them to compete with batteries even in powering atmospheric flying
-            // vehicles, but that...
+            // vehicles, but that drifts too much from the core mission of the mod, so...
             //
-            // MAGICNUM 1.0f: drifts too much from the core mission of the mod, so leave it up to the player.
+            // MAGICNUM 1.0f: leave it up to the player.
             HydrogenEngineMaxPowerOutputMultiplier = 1.0f;
 
             // Thrusters are as gas-hungry as in vanilla. It's a large consideration now whether you want to

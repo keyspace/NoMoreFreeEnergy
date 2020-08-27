@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the config file on loading the save.
 - Allow configuring hydrogen engines' max power output. The default is left
   as in vanilla, since it's not in the mod's main task.
+- Set battery recharge rate multiplier back to 1 (from 0.25), for same reason
+  as above.
 
 [Unreleased]: https://github.com//Stamina/compare/v0.1...HEAD
 
