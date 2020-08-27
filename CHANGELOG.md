@@ -8,16 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing!
+
+[Unreleased]: https://github.com//Stamina/compare/v0.2...HEAD
+
+
+## [0.2] - 2020-08-27
+### Added
+
+- Allow configuring hydrogen engines' max power output. The default is left
+  as in vanilla, since it's not the mod's title task.
+
+### Changed
+
 - O2/H2 generator speed multiplier is no longer directly configurable; it
   is still configurable indirectly, through the "extra" divisor and hydrogen
   engine's efficiency multiplier. The setting will be silently removed from
   the config file on loading the save.
-- Allow configuring hydrogen engines' max power output. The default is left
-  as in vanilla, since it's not in the mod's main task.
-- Set battery recharge rate multiplier back to 1 (from 0.25), for same reason
-  as above.
-
-[Unreleased]: https://github.com//Stamina/compare/v0.1...HEAD
+- Set battery recharge rate multiplier back to 1 (from 0.25) -again, since
+  it's not the mod's title task.
 
 
 ## [0.1] - 2020-08-07
