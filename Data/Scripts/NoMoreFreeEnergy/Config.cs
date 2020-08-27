@@ -6,38 +6,45 @@
     public class Config
     {
         /// <summary>
-        /// Energy density of hydrogen gas when used as fuel by thrusters (not engines!);
-        /// multiplier compared to vanilla. Provided for user convenience only.
+        /// Maximum allowed battery input; multiplier compared to vanilla.
+        /// Allows making the battery more "sluggish" to recharge, making the choice of using
+        /// batteries-only vs. hydrogen-only more pronounced: either simple but slow to recharge
+        /// (batteries) or complex but fast to recharge (hydrogen engines).
+        /// </summary>
+        public float BatteryMaxPowerInputMultiplier { get; set; }
+
+        /// <summary>
+        /// Energy density of hydrogen gas when used as fuel by thrusters (not by engines!);
+        /// multiplier compared to vanilla.
+        /// Provided for user convenience only, to make the game easier/harder.
         /// </summary>
         public float HydrogenGasEnergyDensityMultiplier { get; set; }
 
         /// <summary>
         /// Energy efficiency of hydrogen engines when converting hydrogen gas to electric power;
-        /// multiplier compared to vanilla. Used directly by game and is also factored into the
-        /// calculation of final OxygenGeneratorSpeedMultiplier.
+        /// multiplier compared to vanilla.
+        /// Used directly by game and is also factored into the calculation of final
+        /// OxygenGeneratorSpeedMultiplier.
         /// </summary>
         public float HydrogenEngineEfficiencyMultiplier { get; set; }
 
         /// <summary>
         /// Amount of ice which O2/H2 generators consume in a given time period;
-        /// not used directly in-game (hence "Extra"). Yet - essential to achieve the mod's balancing act:
-        /// this is how much the generators must be slowed down compared to vanilla, irrespective of
-        /// whether hydrogen engines were made more efficient or not.
+        /// used indirectly in-game (hence "Extra").
+        /// Essential to achieve the mod's balancing act: this is how much the generators must
+        /// be slowed down compared to vanilla, irrespective of whether hydrogen engines were
+        /// made more efficient or not.
         /// </summary>
         public float OxygenGeneratorExtraSpeedDivisor { get; set; }
 
         /// <summary>
         /// Amount of ice which O2/H2 generators consume in a given time period;
-        /// multiplier compared to vanilla. Used directly by game, factoring in both the mod's essential
+        /// multiplier compared to vanilla.
+        /// Used directly by game, factoring in both the mod's essential
         /// re-balancing and the possible efficiency increase of hydrogen engines.
+        /// Should not be configured directly - use the other settings.
         /// </summary>
-        public float OxygenGeneratorSpeedMultiplier { get; set; }
-
-        /// <summary>
-        /// Maximum allowed battery input;
-        /// multiplier compared to vanilla. Gives the mod character.
-        /// </summary>
-        public float BatteryMaxPowerInputMultiplier { get; set; }
+        internal float OxygenGeneratorSpeedMultiplier { get; set; }
 
         /// <summary>
         /// Constructor contains defaults; these properties will remain as below if the config couldn't be loaded.
