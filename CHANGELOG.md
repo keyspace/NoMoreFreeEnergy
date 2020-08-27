@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   is still configurable indirectly, through the "extra" divisor and hydrogen
   engine's efficiency multiplier. The setting will be silently removed from
   the config file on loading the save.
-- Set battery recharge rate multiplier back to 1 (from 0.25) -again, since
+- Set battery recharge rate multiplier back to 1 (from 0.25) - again, since
   it's not the mod's title task.
 
 
