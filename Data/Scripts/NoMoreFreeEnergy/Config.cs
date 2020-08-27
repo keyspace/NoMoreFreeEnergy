@@ -22,6 +22,14 @@
         public float HydrogenEngineEfficiencyMultiplier { get; set; }
 
         /// <summary>
+        /// Maximum power that hydrogen engines are capable of producing;
+        /// multiplier compared to vanilla.
+        /// Allows making the engines a viable source of power for atmospheric thrusters - vanilla
+        /// engines are less powerful that batteries (leave alone size comparisons).
+        /// </summary>
+        public float HydrogenEngineMaxPowerOutputMultiplier { get; set; }
+
+        /// <summary>
         /// Energy density of hydrogen gas when used as fuel by thrusters (not by engines!);
         /// multiplier compared to vanilla.
         /// Provided for user convenience only, to make the game easier/harder.
@@ -64,16 +72,23 @@
             // MAGICNUM 0.25f: arbitrary; four times slower seems slow enough.
             BatteryMaxPowerInputMultiplier = 0.25f;
 
-            // Hydrogen engines produce more power from the same amount of gas. This makes hydrogen engines more
+            // Hydrogen engines produce more power from the same amount of gas. This makes them more
             // useful, and allows them to compete with batteries.
             //
             // MAGICNUM 10.0f: semi-arbitrary, vanilla is 0.005f, this seemed a big-enough improvement.
             HydrogenEngineEfficiencyMultiplier = 10.0f;
 
+            // Hydrogen engines could produce more power in a given amount of time. This could make them more
+            // useful, and could allow them to compete with batteries even in powering atmospheric flying
+            // vehicles, but that...
+            //
+            // MAGICNUM 1.0f: drifts too much from the core mission of the mod, so leave it up to the player.
+            HydrogenEngineMaxPowerOutputMultiplier = 1.0f;
+
             // Thrusters are as gas-hungry as in vanilla. It's a large consideration now whether you want to
             // get airborne using hydrogen or atmospherics.
             //
-            // MAGICNUM 1.0f: not used by mod yet, so don't modify.
+            // MAGICNUM 1.0f: leave it up to the player.
             HydrogenGasEnergyDensityMultiplier = 1.0f;
 
             // O2/H2 generators churn less ice in the same amount of time, and in effect consume more power per

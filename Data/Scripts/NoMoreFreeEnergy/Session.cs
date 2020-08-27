@@ -21,16 +21,15 @@ namespace Keyspace.NoMoreFreeEnergy
             // Save immediately instead of in SaveData(), so it's only done once.
             StorageFile.Save("config.xml", Config);
 
-            // TODO: Modify character jetpack to have lower capacity?.. (So that flight duration is kept same.)
-
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "LargeBlockBatteryBlock"));
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockBatteryBlock"));
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockSmallBatteryBlock"));
 
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine"));
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine"));
-
+            
             RebalanceHydrogenGas(new MyDefinitionId(typeof(MyObjectBuilder_GasProperties), "Hydrogen"));
+            // TODO: Modify character jetpack to have lower capacity?.. (So that flight duration is kept same.)
 
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), ""));
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall"));
@@ -46,6 +45,7 @@ namespace Keyspace.NoMoreFreeEnergy
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyHydrogenEngineDefinition;
             definition.FuelProductionToCapacityMultiplier *= Config.HydrogenEngineEfficiencyMultiplier;
+            definition.MaxPowerOutput *= Config.HydrogenEngineMaxPowerOutputMultiplier;
         }
 
         private void RebalanceHydrogenGas(MyDefinitionId definitionId)

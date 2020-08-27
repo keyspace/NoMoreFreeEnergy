@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   is still configurable indirectly, through the "extra" divisor and hydrogen
   engine's efficiency multiplier. The setting will be silently removed from
   the config file on loading the save.
+- Allow configuring hydrogen engines' max power output. The default is left
+  as in vanilla, since it's not in the mod's main task.
 
 [Unreleased]: https://github.com//Stamina/compare/v0.1...HEAD
 
