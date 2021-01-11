@@ -77,8 +77,8 @@
             // Hydrogen engines produce more power from the same amount of gas. This makes them more
             // useful, and allows them to compete with batteries.
             //
-            // MAGICNUM 10.0f: semi-arbitrary, vanilla is 0.005f, this seemed a big-enough improvement.
-            HydrogenEngineEfficiencyMultiplier = 10.0f;
+            // MAGICNUM 10.0f: semi-arbitrary, vanilla is 0.01f, this seemed a big-enough improvement.
+            HydrogenEngineEfficiencyMultiplier = 5.0f;
 
             // Hydrogen engines could produce more power in a given amount of time. This could make them more
             // useful, and could allow them to compete with batteries even in powering atmospheric flying
