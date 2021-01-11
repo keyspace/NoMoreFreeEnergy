@@ -16,13 +16,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.1] - 2021-01-11
 ### Changed
 
-- Updated HydrogenEngineEfficiencyMultiplier to match behaviour of pre-1.197
-  (the "Wasteland" major game update). Since vanilla hydrogen engine
-  efficiency has been increased twice, the mod-provided boost has been
-  reduced twice (from 10 to 5 by default). For existing games, make the same change manually in the
-  configuration file.
+- Updated default hydrogen engine buff and O2/H2 generator nerf to match
+  behaviour of pre-1.197 (the "Wasteland" major game update).
+  Vanilla hydrogen engine efficiency (hydrogen amount -> watt amount) has
+  been doubled; O2/H2 generator material efficiency (ice amount ->
+  hydrogen amount) has also been doubled. This results in a 4-time
+  buff to the ice-to-power resource path.
+  To update existing configs, `HydrogenEngineEfficiencyMultiplier` should be
+  halved, and `OxygenGeneratorExtraSpeedDivisor` doubled.
 
 [0.2.1]: https://github.com/keyspace/Stamina/compare/v0.2...v0.2.1
+
 
 
 ## [0.2] - 2020-08-27
