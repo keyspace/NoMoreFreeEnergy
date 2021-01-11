@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com//Stamina/compare/v0.2...HEAD
+[Unreleased]: https://github.com//Stamina/compare/v0.2.1...HEAD
 
 
 ## [0.2.1] - 2021-01-11
@@ -19,8 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated HydrogenEngineEfficiencyMultiplier to match pre-1.197 (the major)
   game update. Since vanilla hydrogen engine efficiency has been increased
   twice, the mod-provided boost has been reduced twice (from 10 to 5 by
-  default). For existing games, make the same change manually in the configuration
-  file.
+  default). For existing games, make the same change manually in the
+  configuration file.
+
+[0.2.1]: https://github.com/keyspace/Stamina/compare/v0.2...v0.2.1
 
 
 ## [0.2] - 2020-08-27
@@ -37,6 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the config file on loading the save.
 - Set battery recharge rate multiplier back to 1 (from 0.25) - again, since
   it's not the mod's title task.
+
+[0.2]: https://github.com/keyspace/Stamina/compare/v0.1...v0.2
 
 
 ## [0.1] - 2020-08-07
