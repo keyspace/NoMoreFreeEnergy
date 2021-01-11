@@ -77,7 +77,7 @@
             // Hydrogen engines produce more power from the same amount of gas. This makes them more
             // useful, and allows them to compete with batteries.
             //
-            // MAGICNUM 10.0f: semi-arbitrary, vanilla is 0.01f, this seemed a big-enough improvement.
+            // MAGICNUM 5.0f: semi-arbitrary, vanilla is 0.01f, this seemed a big-enough improvement.
             HydrogenEngineEfficiencyMultiplier = 5.0f;
 
             // Hydrogen engines could produce more power in a given amount of time. This could make them more
@@ -96,9 +96,9 @@
             // O2/H2 generators churn less ice in the same amount of time, and in effect consume more power per
             // unit of gas produced.
             //
-            // MAGICNUM 6.0f: picked empirically; seems the lowest this can go is 5.0f or so - otherwise hydrogen
+            // MAGICNUM 12.0f: picked empirically; seems the lowest this can go is 10.0f or so - otherwise hydrogen
             // can be stockpiled even without exploits.
-            OxygenGeneratorExtraSpeedDivisor = 6.0f;
+            OxygenGeneratorExtraSpeedDivisor = 12.0f;
 
             // Apply HEEM and OGESD to calculate the final value we'll be using.
             //
