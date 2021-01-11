@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]: https://github.com//Stamina/compare/v0.2...HEAD
 
 
+## [0.2.1] - 2021-01-11
+### Changed
+
+- Updated HydrogenEngineEfficiencyMultiplier to match pre-1.197 (the major)
+  game update. Since vanilla hydrogen engine efficiency has been increased
+  twice, the mod-provided boost has been reduced twice (from 10 to 5 by
+  default). For existing games, make the same change manually in the configuration
+  file.
+
+
 ## [0.2] - 2020-08-27
 ### Added
 
