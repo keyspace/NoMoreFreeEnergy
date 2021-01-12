@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com//Stamina/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com//NoMoreFreeEnergy/compare/v0.2.1...HEAD
 
 
 ## [0.2.1] - 2021-01-11
@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   To update existing configs, `HydrogenEngineEfficiencyMultiplier` should be
   halved, and `OxygenGeneratorExtraSpeedDivisor` doubled.
 
-[0.2.1]: https://github.com/keyspace/Stamina/compare/v0.2...v0.2.1
+[0.2.1]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.2...v0.2.1
 
 
 
@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set battery recharge rate multiplier back to 1 (from 0.25) - again, since
   it's not the mod's title task.
 
-[0.2]: https://github.com/keyspace/Stamina/compare/v0.1...v0.2
+[0.2]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.1...v0.2
 
 
 ## [0.1] - 2020-08-07
@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Do save the config once after loading.
 - Added mod ID to configuration docs.
 
-[0.1]: https://github.com/keyspace/Stamina/compare/v0.0...v0.1
+[0.1]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.0...v0.1
 
 
 ## [0.0] - 2020-08-07
