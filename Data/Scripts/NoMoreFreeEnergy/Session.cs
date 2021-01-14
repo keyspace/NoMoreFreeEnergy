@@ -58,6 +58,7 @@ namespace Keyspace.NoMoreFreeEnergy
         {
             var definition = MyDefinitionManager.Static.GetDefinition(definitionId) as MyOxygenGeneratorDefinition;
             definition.IceConsumptionPerSecond *= Config.OxygenGeneratorSpeedMultiplier;
+            definition.OperationalPowerConsumption *= Config.OxygenGeneratorPowerConsumptionMultiplier;
         }
 
         //protected override void UnloadData()

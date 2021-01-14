@@ -37,6 +37,14 @@
         public float HydrogenGasEnergyDensityMultiplier { get; set; }
 
         /// <summary>
+        /// Amount of power which O2/H2 generators consume in a given time period;
+        /// used directly in-game.
+        /// Provided as a secondary control to adjust the costs of running an O2/H2 generator
+        /// without impacting its ice-to-gas conversion speed.
+        /// </summary>
+        public float OxygenGeneratorPowerConsumptionMultiplier { get; set; }
+
+        /// <summary>
         /// Amount of ice which O2/H2 generators consume in a given time period;
         /// used indirectly in-game (hence "Extra").
         /// Essential to achieve the mod's balancing act: this is how much the generators must
@@ -93,29 +101,35 @@
             // MAGICNUM 1.0f: leave it up to the player.
             HydrogenGasEnergyDensityMultiplier = 1.0f;
 
+            // The "Wasteland" update halved the generator's ice-to-gases consumption rate, while
+            // leaving power consumption at the same level. Since the mod was already doing this
+            // at an even greter scale, a second control is now required so that the generator's
+            // speed is not affected too much.
+            //
+            // MAGICNUM 2.0f: Keen made ice-to-gases two times more efficient; restore pre-update
+            // balance by increasing power consumption the same amount.
+            OxygenGeneratorPowerConsumptionMultiplier = 2.0f;
+
             // O2/H2 generators churn less ice in the same amount of time, and in effect consume more power per
             // unit of gas produced.
             //
-            // MAGICNUM 12.0f: picked empirically; seems the lowest this can go is 10.0f or so - otherwise hydrogen
-            // can be stockpiled even without exploits.
-            OxygenGeneratorExtraSpeedDivisor = 12.0f;
+            // MAGICNUM 6.0f: picked empirically; seems the lowest that
+            //     OxygenGeneratorExtraSpeedDivisor * OxygenGeneratorPowerConsumptionMultiplier
+            // can go is 10.0f or so - otherwise hydrogen can be stockpiled even without exploits.
+            OxygenGeneratorExtraSpeedDivisor = 6.0f;
 
             // Apply HEEM and OGESD to calculate the final value we'll be using.
             //
-            // NOTE: Earlier versions of this mod also increased O2/H2 gen's power consumption (by same multiplier, 6.0f,
-            // from 100 kW to 600 kW) instead of further reducing its production speed as below.
+            // NOTE: Earlier versions of this mod avoided increasing O2/H2 gen's power consumption
+            // from 100 kW to 600 kW) instead of reducing its ice-to-gases conversion rate. This was
+            // due to an exploit of running a generator on an under-powered grid: due to Keen's check
+            // order and short cycle period, it was possible to get full output while consuming only
+            // a fraction of the input.
             //
-            // However, this showed to be easily exploitable by not providing enough power to
-            // the generator. The rates of ice->gas and power->gas would get out of whack.
-            //
-            // This could be side-stepped for the H2 engine (e.g. small-grid vanilla power of 500 kW) by giving it a
-            // max power output multiplier, so it is above the gen's consumption (e.g. from 500 kW to 750 kW).
-            //
-            // But the exploit would still be possible on small-grid by powering an O2/H2 generator using a small
-            // battery (vanilla output of 200 kW), and increasing _that_ would start to be too much creep.
-            //
-            // To clarify, the exploit is still possible, just not as apparent.
-            OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
+            // This may still be possible, but seems less pronounced since "Sparks of the Future" /
+            // "Server Optimisations" updates (v1.195/v1.196 IIRC), where the cycle period is increased,
+            // and (seemingly) power input requirements must be met _before_ a block will cycle.
+            OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * OxygenGeneratorPowerConsumptionMultiplier * HydrogenEngineEfficiencyMultiplier);
         }
     }
 }
