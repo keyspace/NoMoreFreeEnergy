@@ -14,18 +14,17 @@ Solar panels produce energy when in sunlight, items don't just teleport between 
 
 [b]In short:
 
-- O2/H2 generator production speed is reduced 60 times;
+- O2/H2 generator production speed is reduced 30 times;
+- O2/H2 generator power consumption is increased 2 times;
 - hydrogen engine fuel efficiency is increased 5 times.[/b]
 
-First, to get rid of the physics violation, the O2/H2 generator produces gas [b]12 times slower[/b] while using the same amount of energy. In effect, its energy efficiency is reduced that many times. (The lowest this can go is somewhere around 10.)
+First, to get rid of the physics violation, the O2/H2 generator produces gas [b]6 times slower[/b] in a given time frame while using [b]two times[/b] the energy. In effect, its energy efficiency is reduced [b]twelve[/b] times. (The lowest this can go is somewhere around 10.)
 
-However, this makes the hydrogen engine near-useless compared to the battery, since it consumes gas very fast on its own, and so requires additional tanks for storage, as well as plumbing. For this reason, the hydrogen engine's fuel efficiency is [b]increased 5 times[/b] while the generator's speed is [b]further reduced by the same factor[/b].
+However, this makes the hydrogen engine near-useless compared to the battery (6 times more useless than vanilla). For this reason, the hydrogen engine's fuel efficiency is [b]increased 5 times[/b] while the generator's speed is [b]further reduced by the same factor[/b].
 
 That makes the generator [i]really[/i] slow, and only viable on grids with extra power for the ice-to-gas conversion. Essentially, this requires building dedicated refuelling stations.
 
 This approach has the advantage of allowing existing NPC ship designs to remain operational, provided they use proper hydrogen tanks instead of the hackish O2/H2 gen + ice approach.
-
-A few other approaches have been considered and tested, including simply ramping up the gen's power consumption while retaining its speed. This has the down-side of making another exploit rather apparent, and even hard to avoid unless you're paying attention. The exploit is tied to how the game's electric power sub-system works, and is not trivial to address for anyone but Keen (and probably not them either).
 
 [h2]Any extras?[/h2]
 
@@ -35,7 +34,7 @@ The following multipliers are provided to address that, but are left at 1 by def
 
 - Battery recharge rate can be decreased. This makes the choice of battery-only vs. engine-only more pronounced: batteries are simple but slow to recharge, whereas engines are complex to design with and require stationary infrastructure to produce fuel, but very fast to re-fuel.
 - Hydrogen engine max power output can be increased. This makes it a viable choice of powering atmospheric/ion thrusters.
-- Hydrogen gas energy density can be increased. This is only if you feel it's become too precious to be used as hydrogen thruster fuel.
+- Hydrogen gas energy density can be increased. This is only if you feel that H2 become too precious to be used as thruster fuel.
 
 [h2]How does the gameplay change?[/h2]
 
@@ -69,7 +68,8 @@ To revert to mod defaults, delete config.xml.
 <HydrogenEngineEfficiencyMultiplier>5</HydrogenEngineEfficiencyMultiplier>
 <HydrogenEngineMaxPowerOutputMultiplier>1</HydrogenEngineMaxPowerOutputMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
-<OxygenGeneratorExtraSpeedDivisor>12</OxygenGeneratorExtraSpeedDivisor>
+<OxygenGeneratorPowerConsumptionMultiplier>2</OxygenGeneratorPowerConsumptionMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
 [h3]Configuration: mod author's preference[/h3]
 
@@ -79,17 +79,19 @@ This takes advantage of most of the "extras" mentioned previously, and makes the
 <HydrogenEngineEfficiencyMultiplier>5</HydrogenEngineEfficiencyMultiplier>
 <HydrogenEngineMaxPowerOutputMultiplier>4</HydrogenEngineMaxPowerOutputMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
-<OxygenGeneratorExtraSpeedDivisor>12</OxygenGeneratorExtraSpeedDivisor>
+<OxygenGeneratorPowerConsumptionMultiplier>2</OxygenGeneratorPowerConsumptionMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
 [h3]Configuration: none of the frills[/h3]
 
-Simply set all the multipliers to 1. Leave the divisor at 12: that's the mod's core.
+OxygenGeneratorPowerConsumptionMultiplier * OxygenGeneratorExtraSpeedDivisor must be 10 or higher. E.g.:
 
 <BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>1</HydrogenEngineEfficiencyMultiplier>
 <HydrogenEngineMaxPowerOutputMultiplier>1</HydrogenEngineMaxPowerOutputMultiplier>
 <HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
-<OxygenGeneratorExtraSpeedDivisor>12</OxygenGeneratorExtraSpeedDivisor>
+<OxygenGeneratorPowerConsumptionMultiplier>2</OxygenGeneratorPowerConsumptionMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
 [h2]Source code[/h2]
 

@@ -10,7 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com//NoMoreFreeEnergy/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com//NoMoreFreeEnergy/compare/v0.3...HEAD
+
+
+## [0.3] - 2021-01-14
+### Added
+
+- An `OxygenGeneratorPowerConsumptionMultiplier` setting (default: 2.0) as
+  an additional control that doesn't impact the generator's speed.
+
+### Changed
+
+- Set the default O2/H2 generator ice-to-gases divisor from 12.0 back to 6.0,
+  as the extra x2 is now handled by the new setting. If you feel that the
+  O2/H2 generator is still too slow to produce gas, you can now lower
+  `OxygenGeneratorExtraSpeedDivisor` while increasing
+  `OxygenGeneratorPowerConsumptionMultiplier` by the same ratio.
+
+[0.3]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.2.1...v0.3
 
 
 ## [0.2.1] - 2021-01-11
