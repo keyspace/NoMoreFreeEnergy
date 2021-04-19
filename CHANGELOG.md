@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Changed
 
-- Nothing!
+- Fixed `OxygenGeneratorPowerConsumptionMultiplier` being also erroneously
+  applied in calculating `OxygenGeneratorSpeedMultiplier` when a config was
+  not present on load. In effect, the block's overall utility was being nerfed
+  twice. ([_1])
 
 [Unreleased]: https://github.com//NoMoreFreeEnergy/compare/v0.3...HEAD
+[_1]: https://github.com/keyspace/NoMoreFreeEnergy/issues/1
 
 
 ## [0.3] - 2021-01-14

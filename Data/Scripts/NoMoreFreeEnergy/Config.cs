@@ -56,8 +56,9 @@
         /// <summary>
         /// Amount of ice which O2/H2 generators consume in a given time period;
         /// multiplier compared to vanilla.
-        /// Used directly by game, factoring in both the mod's essential
-        /// re-balancing and the possible efficiency increase of hydrogen engines.
+        /// Used directly by game, factoring in:
+        /// * the mod's essential re-balancing for the oxygen generator (OGESD);
+        /// * the optional efficiency increase of hydrogen engines (HEEM).
         /// Can not be configured directly - use the other settings.
         /// </summary>
         internal float OxygenGeneratorSpeedMultiplier {
@@ -65,6 +66,7 @@
                 return 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
             }
             set {
+                // Attempts to set are ignored.
                 return;
             }
         }
@@ -103,7 +105,7 @@
 
             // The "Wasteland" update halved the generator's ice-to-gases consumption rate, while
             // leaving power consumption at the same level. Since the mod was already doing this
-            // at an even greter scale, a second control is now required so that the generator's
+            // at an even greater scale, a second control is now required so that the generator's
             // speed is not affected too much.
             //
             // MAGICNUM 2.0f: Keen made ice-to-gases two times more efficient; restore pre-update
@@ -129,7 +131,7 @@
             // This may still be possible, but seems less pronounced since "Sparks of the Future" /
             // "Server Optimisations" updates (v1.195/v1.196 IIRC), where the cycle period is increased,
             // and (seemingly) power input requirements must be met _before_ a block will cycle.
-            OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * OxygenGeneratorPowerConsumptionMultiplier * HydrogenEngineEfficiencyMultiplier);
+            OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier);
         }
     }
 }
