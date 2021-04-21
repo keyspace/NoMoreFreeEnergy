@@ -7,14 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+
+- Nothing!
+
+[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.1...HEAD
+
+
+## [0.3.1] - 2021-04-21
 ### Changed
 
 - Fixed `OxygenGeneratorPowerConsumptionMultiplier` being also erroneously
   applied in calculating `OxygenGeneratorSpeedMultiplier` when a config was
   not present on load. In effect, the block's overall utility was being nerfed
   twice. ([_1])
+- Updated instructions with an explanation of what is a configuration constraint,
+  and what is an unenforced recommendation.
+- Added configuration example for "closer to realism".
 
-[Unreleased]: https://github.com//NoMoreFreeEnergy/compare/v0.3...HEAD
+[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3...v0.3.1
 [_1]: https://github.com/keyspace/NoMoreFreeEnergy/issues/1
 
 

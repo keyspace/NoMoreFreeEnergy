@@ -45,7 +45,7 @@
         public float OxygenGeneratorPowerConsumptionMultiplier { get; set; }
 
         /// <summary>
-        /// Amount of ice which O2/H2 generators consume in a given time period;
+        /// Controls the amount of ice which O2/H2 generators consume in a given time period;
         /// used indirectly in-game (hence "Extra").
         /// Essential to achieve the mod's balancing act: this is how much the generators must
         /// be slowed down compared to vanilla, irrespective of whether hydrogen engines were

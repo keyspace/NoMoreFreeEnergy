@@ -8,6 +8,11 @@ There are also other re-balancing settings to make the hydrogen engine a worthy 
 to the battery as a power source, but they are left at a multiplier of 1 by default to
 cause less surprises.
 
+## Documentation
+
+See [`WORKSHOP.bbcode`](WORKSHOP.bbcode) - or view it formatted on the
+[Steam Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=2189531971).
+
 ## License
 
 Files not marked otherwise are licensed under

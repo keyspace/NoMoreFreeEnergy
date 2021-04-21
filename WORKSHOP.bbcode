@@ -62,7 +62,23 @@ https://github.com/keyspace/NoMoreFreeEnergy/blob/master/Data/Scripts/NoMoreFree
 
 To revert to mod defaults, delete config.xml.
 
-[h3]Configuration: defaults[/h3]
+[h3]General constraints[/h3]
+
+To achieve the desired balance, the mod has been enforcing the following [b]constraint[/b] since release v0.0:
+
+OxygenGeneratorSpeedMultiplier = 1.0f / (OxygenGeneratorExtraSpeedDivisor * HydrogenEngineEfficiencyMultiplier)
+
+In Space Engineers v1.197 ("Wasteland" update), Keen Software House made balance adjustments that necessitated OxygenGeneratorPowerConsumptionMultiplier becoming configurable. For this reason, the following [b]recommendation[/b] has been introduced in mod release v0.3:
+
+OxygenGeneratorPowerConsumptionMultiplier * OxygenGeneratorExtraSpeedDivisor >= 10
+
+However, it is not enforced, so it's become possible to "break" the desired balance by way of misconfiguration.
+
+Take care to observe this if you wish to peruse the mod as intended!
+
+(This will be addressed in a later mod update.)
+
+[h3]Configuration: mod defaults[/h3]
 
 <BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>5</HydrogenEngineEfficiencyMultiplier>
@@ -71,20 +87,29 @@ To revert to mod defaults, delete config.xml.
 <OxygenGeneratorPowerConsumptionMultiplier>2</OxygenGeneratorPowerConsumptionMultiplier>
 <OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
-[h3]Configuration: mod author's preference[/h3]
+[h3]Configuration: author's personal preference[/h3]
 
-This takes advantage of most of the "extras" mentioned previously, and makes the hydrogen engine an all-round useful block.
+This takes advantage of all the "extras" mentioned previously, and makes the hydrogen engine an all-round useful block.
 
 <BatteryMaxPowerInputMultiplier>0.25</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>5</HydrogenEngineEfficiencyMultiplier>
 <HydrogenEngineMaxPowerOutputMultiplier>4</HydrogenEngineMaxPowerOutputMultiplier>
-<HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
+<HydrogenGasEnergyDensityMultiplier>2</HydrogenGasEnergyDensityMultiplier>
 <OxygenGeneratorPowerConsumptionMultiplier>2</OxygenGeneratorPowerConsumptionMultiplier>
 <OxygenGeneratorExtraSpeedDivisor>6</OxygenGeneratorExtraSpeedDivisor>
 
-[h3]Configuration: none of the frills[/h3]
+[h3]Configuration: closer to realism[/h3]
 
-OxygenGeneratorPowerConsumptionMultiplier * OxygenGeneratorExtraSpeedDivisor must be 10 or higher. E.g.:
+<BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
+<HydrogenEngineEfficiencyMultiplier>32</HydrogenEngineEfficiencyMultiplier>
+<HydrogenEngineMaxPowerOutputMultiplier>4</HydrogenEngineMaxPowerOutputMultiplier>
+<HydrogenGasEnergyDensityMultiplier>1</HydrogenGasEnergyDensityMultiplier>
+<OxygenGeneratorPowerConsumptionMultiplier>25</OxygenGeneratorPowerConsumptionMultiplier>
+<OxygenGeneratorExtraSpeedDivisor>1.25</OxygenGeneratorExtraSpeedDivisor>
+
+Provided by @creamerl1015. See [url=https://steamcommunity.com/workshop/filedetails/discussion/2189531971/5506189390977796611/]Steam discussion[/url] for more calculations and variants.
+
+[h3]Configuration: none of the frills[/h3]
 
 <BatteryMaxPowerInputMultiplier>1</BatteryMaxPowerInputMultiplier>
 <HydrogenEngineEfficiencyMultiplier>1</HydrogenEngineEfficiencyMultiplier>
