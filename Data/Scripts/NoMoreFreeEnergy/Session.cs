@@ -20,10 +20,12 @@ namespace Keyspace.NoMoreFreeEnergy
             Config = StorageFile.Load<Config>("config.xml");
             // Save immediately instead of in SaveData(), so it's only done once.
             StorageFile.Save("config.xml", Config);
-
+            
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "LargeBlockBatteryBlock"));
+            RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "LargeBlockBatteryBlockWarfare2"));
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockBatteryBlock"));
             RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockSmallBatteryBlock"));
+            RebalanceBattery(new MyDefinitionId(typeof(MyObjectBuilder_BatteryBlock), "SmallBlockBatteryBlockWarfare2"));
 
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "LargeHydrogenEngine"));
             RebalanceHydrogenEngine(new MyDefinitionId(typeof(MyObjectBuilder_HydrogenEngine), "SmallHydrogenEngine"));
