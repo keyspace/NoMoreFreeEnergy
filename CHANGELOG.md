@@ -10,7 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.2...HEAD
+
+
+## [0.3.2] - 2023-01-30
+### Changed
+
+- Fixed rebalancing not applying to  batteries that were introduced in the
+  "Warfare 2" update. DLC blocks use separate definitions and were therefore
+  not picked up. ([_5])
+
+[0.3.2]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.1...v0.3.2
+[_5]: https://github.com/keyspace/NoMoreFreeEnergy/issues/5
 
 
 ## [0.3.1] - 2021-04-21
@@ -24,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and what is an unenforced recommendation.
 - Added configuration example for "closer to realism".
 
-[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3...v0.3.1
+[0.3.1]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3...v0.3.1
 [_1]: https://github.com/keyspace/NoMoreFreeEnergy/issues/1
 
 
