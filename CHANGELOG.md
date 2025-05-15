@@ -10,7 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing!
 
-[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.2...HEAD
+[Unreleased]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.3...HEAD
+
+
+## [0.3.3] - 2025-05-15
+### Changed
+
+- Apply rebalancing to new Fieldwork DLC O2/H2 generators ("lab" skin).
+
+[0.3.3]: https://github.com/keyspace/NoMoreFreeEnergy/compare/v0.3.2...v0.3.3
 
 
 ## [0.3.2] - 2023-01-30
