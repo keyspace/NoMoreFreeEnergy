@@ -35,6 +35,8 @@ namespace Keyspace.NoMoreFreeEnergy
 
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), ""));
             RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "OxygenGeneratorSmall"));
+            RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "LargeBlockOxygenGeneratorLab"));
+            RebalanceOxygenGenerator(new MyDefinitionId(typeof(MyObjectBuilder_OxygenGenerator), "SmallBlockOxygenGeneratorLab"));
         }
 
         private void RebalanceBattery(MyDefinitionId definitionId)
